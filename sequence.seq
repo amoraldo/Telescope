@@ -1,0 +1,38 @@
+// Help
+// comandos disponibles:
+//    send A: envia el comando A por puerto
+//    pause: ejecuta una pausa hasta que se presiona enter
+//    wait x:  espera x segundos (utiliza . para decimales)
+//    send_until A: lee telescopio leyendo el comando get en el telescopio
+//    read A: envia comando get y devuelve valor
+
+// Instrucciones telescopio: (pueden probarse con Hyperterminal, putty, etc)
+//   E: get RA/DEC (16 bits)
+//   e: get precise RA/DEC (24 bits) 
+//   Z: get AZM/ALT (16 bits)
+//   z: get precise ALM/ALT (24 bits)
+//   R: goto RA/DEC (16 bits)
+//   r: goto precise RA/DEC (24 bits) 
+//   B: goto AZM/ALT (16 bits)
+//   b: goto precise ALM/ALT (24 bits)
+
+//   and more...
+
+
+// 
+[Main]
+pause
+read E
+read e
+read Z
+read z
+send R4145,AB5B
+wait 7.4
+send R4245,EC5B
+pause
+//send R4145,EB5B
+send_until R3145,EB5B
+send_until R4145,DB5B
+send_until R4145,EB5B
+
+
